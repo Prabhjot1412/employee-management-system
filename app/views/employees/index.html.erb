@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Employees List</h1>
+
+  <%= link_to "New employee", new_employee_path, class: "btn btn-primary" %>
+
+<p class="alert alert-success"><%= notice %></p>
+
+<div class="container border border-primary">
+  <h1>Employees</h1>
+
+  <div id="employees">
+    <% @employees.each do |employee| %>
+      <%= render employee %>
+       <%= link_to "Show this employee", employee_path(id: employee.id), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+</div>

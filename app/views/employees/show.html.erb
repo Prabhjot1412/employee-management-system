@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1> Employee Details </h1>
+
+<%= render @employee %>
+
+<table>
+  <tr>
+    <%= link_to "Edit this employee", edit_employee_path(id: @employee.id), class: "btn btn-warning" %>  |
+
+    <%= link_to "Back to employees", employees_path, class: "btn btn-primary" %>
+
+  </tr>
+</table>
