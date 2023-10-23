@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This migration creates the "employees" table in the database.
 class CreateEmployees < ActiveRecord::Migration[7.0]
   def change
     create_table :employees do |t|

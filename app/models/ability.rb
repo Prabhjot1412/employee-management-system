@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
+# The Ability class defines user permissions and abilities in the application.
 class Ability
   include CanCan::Ability
-
   def initialize(user)
-    can :create,Employee, user: EMPLOYEE
-    can :update, Employee, user: EMPLOYEE
-    can :read, Employee if user.EMPLOYEE?
-    can :manage, :all if user.admin? || user.ADMIN?
+    can :read, User if user.employee?
+    can :manage, :all if user.admin? || user.admin!
   end
 end

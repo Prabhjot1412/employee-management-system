@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This is the GraphqlController class, which handles GraphQL requests and queries.
 class GraphqlController < ApplicationController
   skip_before_action :verify_authenticity_token
   # If accessing from outside this domain, nullify the session
@@ -10,7 +11,7 @@ class GraphqlController < ApplicationController
   def execute
     variables = prepare_variables(params[:variables])
     query = params[:query]
-    operation_name = params[:operationName]
+    params[:operationName]
     context = {
       # Query context goes here, for example:
       # current_user: current_user,
@@ -19,6 +20,7 @@ class GraphqlController < ApplicationController
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?
+
     handle_error_in_development(e)
   end
 
@@ -28,15 +30,9 @@ class GraphqlController < ApplicationController
   def prepare_variables(variables_param)
     case variables_param
     when String
-      if variables_param.present?
-        JSON.parse(variables_param) || {}
-      else
-        {}
-      end
-    when Hash
+      variables_param.present? ? JSON.parse(variables_param) : {}
+    when Hash, ActionController::Parameters
       variables_param
-    when ActionController::Parameters
-      variables_param.to_unsafe_hash # GraphQL-Ruby will validate name and type of incoming variables.
     when nil
       {}
     else
@@ -44,10 +40,10 @@ class GraphqlController < ApplicationController
     end
   end
 
-  def handle_error_in_development(e)
+  def handle_error_in_development(err)
     logger.error e.message
     logger.error e.backtrace.join("\n")
 
-    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
+    render json: { errors: [{ message: err.message, backtrace: err.backtrace }], data: {} }, status: 500
   end
 end

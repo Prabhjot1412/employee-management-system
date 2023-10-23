@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Types
+  # Types::UserInputType is a custom GraphQL input object type used for user-related input data.
   class UserInputType < Types::BaseInputObject
     argument :id, ID, required: false
     argument :email, String, required: false

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Types
+  # Types::UserType is a custom GraphQL object type used for representing user data.
   class UserType < Types::BaseObject
     field :id, ID, null: false
     field :email, String, null: false

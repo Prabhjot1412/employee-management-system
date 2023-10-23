@@ -1,24 +1,23 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Employment Management System (EMS)
+## Overview
+The Employment Management System (EMS) is a web application built with Ruby on Rails and GraphQL.
 
-Things you may want to cover:
+## Features
+User Authentication: Secure login and registration for administrators and employees.
+GraphQL API: A GraphQL API for querying and mutating employee data.
+Employee Profiles: Create, update, and view detailed employee profiles.
+User Roles: Implement different user roles for administrators and employees.
 
-* Ruby version
+## Prerequisites
+Before you begin, ensure you have met the following requirements:
 
-* System dependencies
+Ruby (version 2.7.0 or higher)
+Ruby on Rails (version 6.0 or higher)
+PostgreSQL (or another preferred database)
+Node.js (for JavaScript dependencies)
+Yarn (for managing JavaScript packages)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Usage
+Register as an administrator to start managing employee data.
+Use the GraphQL API to interact with employee data programmatically.

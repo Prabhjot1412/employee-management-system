@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 module Mutations
+  # Mutations::UserUpdate is a GraphQL mutation for updating user information.
   class UserUpdate < BaseMutation
-    description "Updates a user by id"
+    description 'Updates a user by id'
 
     field :user, Types::UserType, null: false
 
@@ -11,7 +12,10 @@ module Mutations
 
     def resolve(id:, user_input:)
       user = ::User.find(id)
-      raise GraphQL::ExecutionError.new "Error updating user", extensions: user.errors.to_hash unless user.update(**user_input)
+      unless user.update(**user_input)
+        raise GraphQL::ExecutionError.new 'Error updating user',
+                                          extensions: user.errors.to_hash
+      end
 
       { user: user }
     end

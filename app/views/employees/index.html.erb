@@ -3,6 +3,7 @@
 <h1>Employees List</h1>
 
   <%= link_to "New employee", new_employee_path, class: "btn btn-primary" %>
+  <%= link_to "Logout", destroy_user_session_path, method: :DELETE, class: "btn btn-danger" %>
 
 <p class="alert alert-success"><%= notice %></p>
 

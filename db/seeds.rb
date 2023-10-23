@@ -1,18 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# frozen_string_literal: true
 
-puts "Createing roles....."
+puts 'Createing roles.....'
 
 Role::SUPPORTTED_ROLES.each do |role|
   Role.create!(name: role)
 end
 
-puts "Createing admin....."
+puts 'Createing admin.....'
 User.create!(
   name: 'Admin',
   role_id: Role.find_by_name(Role::ADMIN).id,
